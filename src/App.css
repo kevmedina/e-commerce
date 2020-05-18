@@ -25,3 +25,7 @@ body {
 .text-bright {
   color: var(--lightBlue);
 }
+
+.nav-link {
+  color: var(--mainWhite) !important;
+}
