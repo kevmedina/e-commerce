@@ -14,6 +14,7 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route exact path="/" component={ProductList} />
+        <Route exact path="/products" component={ProductList} />
         <Route exact path="/product-details" component={ProductDetails} />
         <Route exact path="/cart" component={Cart} />
         <Route component={Default} />

@@ -1,11 +1,16 @@
 import React from "react";
-import Product from "./Product"
+import Product from "./Product";
+import { storeProducts } from "../data";
 
 const ProductList = () => {
   return (
-    <div>
-      <h1>Home Page</h1>
-      <Product />
+    <div className="products">
+      <h1 className="text-center m-5">Products</h1>
+      <div className="product-list">
+        {storeProducts.map((product, index) => {
+          return <Product product={product} key={index} />;
+        })}
+      </div>
     </div>
   );
 };
