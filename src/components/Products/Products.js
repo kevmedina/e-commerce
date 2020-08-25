@@ -1,8 +1,8 @@
 import React from "react";
-import Product from "./Product";
-import { storeProducts } from "../data";
+import Product from "../Product/Product";
+import { storeProducts } from "../../data";
 
-const ProductList = () => {
+const Products = () => {
   return (
     <div className="products">
       <h1 className="text-center m-5">Products</h1>
@@ -15,4 +15,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default Products;
