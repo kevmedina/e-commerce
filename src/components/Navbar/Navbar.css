@@ -1,0 +1,24 @@
+.navbar {
+  width: 100vw;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #203040;
+  color: #ffffff;
+  padding: 0.5rem;
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.nav-link:hover {
+  color: #ff8000;
+}
+
+.cart-link {
+  margin-right: 20px;
+}
