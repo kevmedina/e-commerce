@@ -1,11 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
   return (
     <div className="product">
       <div>
-        <img src={product.img} alt="product" />
+        <img src={product.image} alt={product.title} />
       </div>
 
       <div>
@@ -13,8 +12,12 @@ const Product = ({ product }) => {
       </div>
 
       <div>
-        <Link to="/product-details">Product Details</Link>
-        <Link to="/cart">Add To Cart</Link>
+        <p>{product.description}</p>
+      </div>
+
+      <div>
+        <button>Product Details</button>
+        <button>Add To Cart</button>
       </div>
     </div>
   );
