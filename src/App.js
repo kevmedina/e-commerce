@@ -5,6 +5,7 @@ import Landing from "./components/Landing/Landing";
 import Products from "./components/Products/Products";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import Cart from "./components/Cart/Cart";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   return (
@@ -20,7 +21,7 @@ const App = () => {
           <Route exact path="/cart" component={Cart} />
         </Switch>
       </main>
-      <footer>All right is reserved.</footer>
+      <Footer />
     </div>
   );
 };
