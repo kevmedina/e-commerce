@@ -1,0 +1,17 @@
+.product {
+  width: 400px;
+  height: auto;
+  min-width: 200px;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.product-link {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #811edd;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 20px;
+}

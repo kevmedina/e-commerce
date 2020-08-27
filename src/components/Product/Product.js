@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import "./Product.css";
 
 const Product = ({ product }) => {
   return (
@@ -12,12 +14,12 @@ const Product = ({ product }) => {
       </div>
 
       <div>
-        <p>{product.description}</p>
-      </div>
-
-      <div>
-        <button>Product Details</button>
-        <button>Add To Cart</button>
+        <Link to="/product-details" className="product-link">
+          Product Details
+        </Link>
+        <Link to="/cart" className="product-link">
+          Add To Cart
+        </Link>
       </div>
     </div>
   );

@@ -1,0 +1,16 @@
+.products-container {
+  width: 100vw;
+  padding: 20px;
+}
+
+.product-list {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.products-container .title {
+  text-align: center;
+  font-size: 4rem;
+  color: #811edd;
+}

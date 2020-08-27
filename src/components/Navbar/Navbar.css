@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #203040;
+  background-color: #811edd;
   color: #ffffff;
   padding: 0.5rem;
 }
@@ -16,7 +16,7 @@
 }
 
 .nav-link:hover {
-  color: #ff8000;
+  color: blue;
 }
 
 .cart-link {
