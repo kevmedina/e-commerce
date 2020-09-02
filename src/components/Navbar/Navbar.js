@@ -14,12 +14,9 @@ const Navbar = () => {
         </NavLink>
       </div>
       <NavLink to="/cart" className="cart-link">
-        <button>
-          <span className="cart-icon">
-            <i className="fas fa-cart-plus"></i>
-          </span>
-          My Cart
-        </button>
+        <span className="cart-icon">
+          <i className="fas fa-cart-plus"></i>
+        </span>
       </NavLink>
     </nav>
   );

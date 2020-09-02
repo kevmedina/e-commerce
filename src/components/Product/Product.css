@@ -5,13 +5,15 @@
   margin: 20px;
   padding: 20px;
   text-align: center;
+  background-color: lightgray;
 }
 
 .product-link {
-  color: #ffffff;
+  color: #811edd;
   text-decoration: none;
-  background-color: #811edd;
-  padding: 10px 20px;
-  margin: 0 10px;
-  border-radius: 20px;
+}
+
+.product-info {
+  display: flex;
+  justify-content: space-between;
 }
