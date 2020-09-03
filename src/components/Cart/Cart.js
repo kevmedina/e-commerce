@@ -1,11 +1,56 @@
-import React from 'react'
+import React from "react";
+import "./Cart.css";
 
 const Cart = () => {
-    return (
+  return (
+    <div className="cart-container">
+      <header>
+        <h1>Shopping Cart</h1>
+      </header>
+      <section>
+        {/* Table with products added to the cart */}
         <div>
-            <h3>Hello from Cart</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Products</th>
+                <th>Qty</th>
+                <th>Remove</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Product 1</td>
+                <td>1</td>
+                <td>X</td>
+                <td>0</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-    )
-}
 
-export default Cart
+        {/* Checkout button section */}
+        <div className="checkout-container">
+          <div>
+            <h1>DBDY</h1>
+          </div>
+          <div>
+            <p>
+              Subtotal <span>$0.00</span>
+            </p>
+            <p>
+              Tax <span>$0.00</span>
+            </p>
+            <p>
+              Total <span>$0.00</span>
+            </p>
+            <button>Checkout</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Cart;
