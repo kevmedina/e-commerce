@@ -11,10 +11,12 @@ const initialState = {
 export const productsReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_PRODUCT":
-      const newCartItems = [...state.products, action.product];
+      const newProduct = state.products.filter(
+        (product) => product.id === action.id
+      );
       return {
         ...state,
-        cart: newCartItems,
+        cart: [...state.cart, newProduct],
       };
     case "REMOVE_PRODUCT":
       const updatedCartItems = state.products.filter(

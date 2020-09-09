@@ -1,9 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
 import Product from "../Product/Product";
-import storeProducts from "../../data.json";
 import "./Products.css";
 
-const Products = () => {
+const Products = ({ products }) => {
   return (
     <div className="products-container">
       <header>
@@ -11,7 +11,7 @@ const Products = () => {
       </header>
 
       <div className="product-list">
-        {storeProducts.products.map((product, index) => {
+        {products.map((product, index) => {
           return <Product product={product} key={index} />;
         })}
       </div>
@@ -19,4 +19,10 @@ const Products = () => {
   );
 };
 
-export default Products;
+const mapStateToProps = (reduxStore) => {
+  return {
+    products: reduxStore.productsReducer.products,
+  };
+};
+
+export default connect(mapStateToProps, null)(Products);

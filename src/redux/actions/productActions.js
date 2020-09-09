@@ -1,5 +1,5 @@
-export const addProduct = (product) => (dispatch) => {
-  dispatch({ type: "ADD_PRODUCT", product });
+export const addProduct = (id) => (dispatch) => {
+  dispatch({ type: "ADD_PRODUCT", id });
 };
 
 export const removeProduct = (id) => (dispatch) => {

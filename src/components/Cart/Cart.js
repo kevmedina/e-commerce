@@ -1,7 +1,9 @@
 import React from "react";
 import "./Cart.css";
+import { connect } from "react-redux";
 
-const Cart = () => {
+const Cart = ({ cartItems }) => {
+  console.log(cartItems);
   return (
     <div className="cart-container">
       <header>
@@ -53,4 +55,10 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+const mapStateToProps = (reduxStore) => {
+  return {
+    cartItems: reduxStore.productsReducer.cart,
+  };
+};
+
+export default connect(mapStateToProps, null)(Cart);
