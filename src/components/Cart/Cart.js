@@ -1,8 +1,9 @@
 import React from "react";
 import "./Cart.css";
 import { connect } from "react-redux";
+import { deleteProduct } from "../../redux/actions/productActions";
 
-const Cart = ({ cartItems }) => {
+const Cart = ({ cartItems, deleteProduct }) => {
   console.log(cartItems);
   return (
     <div className="cart-container">
@@ -22,12 +23,20 @@ const Cart = ({ cartItems }) => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Product 1</td>
-                <td>1</td>
-                <td>X</td>
-                <td>0</td>
-              </tr>
+              {cartItems.map((product, i) => {
+                return (
+                  <tr key={i}>
+                    <td>{product.title}</td>
+                    <td>1</td>
+                    <td>
+                      <button onClick={() => deleteProduct(product.id)}>
+                        X
+                      </button>
+                    </td>
+                    <td>{product.price}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
@@ -57,8 +66,14 @@ const Cart = ({ cartItems }) => {
 
 const mapStateToProps = (reduxStore) => {
   return {
-    cartItems: reduxStore.productsReducer.cart,
+    cartItems: reduxStore.productsReducer.cartItems,
   };
 };
 
-export default connect(mapStateToProps, null)(Cart);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteProduct: (id) => dispatch(deleteProduct(id)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

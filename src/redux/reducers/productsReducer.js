@@ -2,7 +2,7 @@ import storeProducts from "../../data.json";
 
 const initialState = {
   products: storeProducts.products,
-  cart: [],
+  cartItems: [],
   cartSubTotal: 0,
   cartTax: 0,
   cartTotal: 0,
@@ -16,15 +16,15 @@ export const productsReducer = (state = initialState, action) => {
       );
       return {
         ...state,
-        cart: [...state.cart, newProduct],
+        cartItems: [...state.cartItems, newProduct],
       };
     case "REMOVE_PRODUCT":
-      const updatedCartItems = state.products.filter(
+      const updatedCartItems = state.cartItems.filter(
         (product) => product.id !== action.id
       );
       return {
         ...state,
-        cart: updatedCartItems,
+        cartItems: updatedCartItems,
       };
     default:
       return state;
