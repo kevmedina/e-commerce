@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Cart.css";
 import { connect } from "react-redux";
 import { deleteProduct } from "../../redux/actions/productActions";
 
 const Cart = ({ cartItems, deleteProduct }) => {
-  console.log(cartItems);
+  const [itemsInCart, setItemsInCart] = useState([]);
+
+  useEffect(() => {
+    setItemsInCart(cartItems);
+  }, [cartItems, itemsInCart]);
+
   return (
     <div className="cart-container">
       <header>
@@ -23,17 +28,25 @@ const Cart = ({ cartItems, deleteProduct }) => {
               </tr>
             </thead>
             <tbody>
-              {cartItems.map((product, i) => {
+              {itemsInCart.map((product, i) => {
                 return (
                   <tr key={i}>
-                    <td>{product.title}</td>
+                    <td>
+                      {product[0].title}
+                      <img
+                        src={product[0].image}
+                        alt="product"
+                        width="60"
+                        height="60"
+                      />
+                    </td>
                     <td>1</td>
                     <td>
                       <button onClick={() => deleteProduct(product.id)}>
                         X
                       </button>
                     </td>
-                    <td>{product.price}</td>
+                    <td>${product[0].price}.00</td>
                   </tr>
                 );
               })}

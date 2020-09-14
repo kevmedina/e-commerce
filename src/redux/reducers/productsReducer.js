@@ -14,14 +14,17 @@ export const productsReducer = (state = initialState, action) => {
       const newProduct = state.products.filter(
         (product) => product.id === action.id
       );
+      localStorage.setItem("itemsInCart", JSON.stringify(newProduct));
       return {
         ...state,
         cartItems: [...state.cartItems, newProduct],
       };
+
     case "REMOVE_PRODUCT":
       const updatedCartItems = state.cartItems.filter(
         (product) => product.id !== action.id
       );
+      localStorage.setItem("itemsInCart", JSON.stringify(updatedCartItems));
       return {
         ...state,
         cartItems: updatedCartItems,
