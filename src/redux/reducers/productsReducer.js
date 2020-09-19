@@ -14,17 +14,22 @@ export const productsReducer = (state = initialState, action) => {
       const newProduct = state.products.filter(
         (product) => product.id === action.id
       );
-      localStorage.setItem("itemsInCart", JSON.stringify(newProduct));
+
+      const subTotal = state.cartItems.reduce((accum, currentPrice) => {
+        return accum + currentPrice[0].price;
+      }, 0);
+
       return {
         ...state,
         cartItems: [...state.cartItems, newProduct],
+        cartSubTotal: subTotal,
       };
 
     case "REMOVE_PRODUCT":
       const updatedCartItems = state.cartItems.filter(
         (product) => product.id !== action.id
       );
-      localStorage.setItem("itemsInCart", JSON.stringify(updatedCartItems));
+
       return {
         ...state,
         cartItems: updatedCartItems,

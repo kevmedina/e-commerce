@@ -3,12 +3,12 @@ import "./Cart.css";
 import { connect } from "react-redux";
 import { deleteProduct } from "../../redux/actions/productActions";
 
-const Cart = ({ cartItems, deleteProduct }) => {
-  const [itemsInCart, setItemsInCart] = useState([]);
+const Cart = ({ reduxCartItems, cartSubTotal, deleteProduct }) => {
+  const [products, setProducts] = useState(reduxCartItems);
 
   useEffect(() => {
-    setItemsInCart(cartItems);
-  }, [cartItems, itemsInCart]);
+    setProducts(reduxCartItems);
+  }, [reduxCartItems]);
 
   return (
     <div className="cart-container">
@@ -28,7 +28,7 @@ const Cart = ({ cartItems, deleteProduct }) => {
               </tr>
             </thead>
             <tbody>
-              {itemsInCart.map((product, i) => {
+              {products.map((product, i) => {
                 return (
                   <tr key={i}>
                     <td>
@@ -42,7 +42,7 @@ const Cart = ({ cartItems, deleteProduct }) => {
                     </td>
                     <td>1</td>
                     <td>
-                      <button onClick={() => deleteProduct(product.id)}>
+                      <button onClick={() => deleteProduct(product[0].id)}>
                         X
                       </button>
                     </td>
@@ -61,7 +61,7 @@ const Cart = ({ cartItems, deleteProduct }) => {
           </div>
           <div>
             <p>
-              Subtotal <span>$0.00</span>
+              Subtotal <span>${cartSubTotal}.00</span>
             </p>
             <p>
               Tax <span>$0.00</span>
@@ -79,7 +79,8 @@ const Cart = ({ cartItems, deleteProduct }) => {
 
 const mapStateToProps = (reduxStore) => {
   return {
-    cartItems: reduxStore.productsReducer.cartItems,
+    reduxCartItems: reduxStore.productsReducer.cartItems,
+    cartSubTotal: reduxStore.productsReducer.cartSubTotal,
   };
 };
 
