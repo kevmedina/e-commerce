@@ -28,28 +28,30 @@ const Cart = ({ reduxCartItems, cartSubTotal, deleteProduct }) => {
               </tr>
             </thead>
             <tbody>
-              {products.map((product, i) => {
-                return (
-                  <tr key={i}>
-                    <td>
-                      {product[0].title}
-                      <img
-                        src={product[0].image}
-                        alt="product"
-                        width="60"
-                        height="60"
-                      />
-                    </td>
-                    <td>1</td>
-                    <td>
-                      <button onClick={() => deleteProduct(product[0].id)}>
-                        X
-                      </button>
-                    </td>
-                    <td>${product[0].price}.00</td>
-                  </tr>
-                );
-              })}
+              {products
+                ? products.map((product, i) => {
+                    return (
+                      <tr key={i}>
+                        <td>
+                          {product[0].title}
+                          <img
+                            src={product[0].image}
+                            alt="product"
+                            width="60"
+                            height="60"
+                          />
+                        </td>
+                        <td>1</td>
+                        <td>
+                          <button onClick={() => deleteProduct(product[0].id)}>
+                            X
+                          </button>
+                        </td>
+                        <td>${product[0].price}.00</td>
+                      </tr>
+                    );
+                  })
+                : null}
             </tbody>
           </table>
         </div>

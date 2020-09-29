@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 import "./Navbar.css";
+import { getCartItems } from "../../redux/actions/productActions";
 
-const Navbar = () => {
+const Navbar = (props) => {
+  useEffect(() => {
+    getCartItems();
+  }, []);
+
   return (
     <nav className="navbar">
       <div>
@@ -17,9 +23,22 @@ const Navbar = () => {
         <span className="cart-icon">
           <i className="fas fa-cart-plus"></i>
         </span>
+        <span>{props.itemsInCart}</span>
       </NavLink>
     </nav>
   );
 };
 
-export default Navbar;
+const mapStateToProps = (reduxStore) => {
+  return {
+    itemsInCart: reduxStore.productsReducer.itemsInCart,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getCartItems: () => dispatch(getCartItems()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
