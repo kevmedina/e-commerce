@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "./Cart.css";
 import { connect } from "react-redux";
 import { deleteProduct } from "../../redux/actions/productActions";
+import "./Cart.css";
 
 const Cart = ({ reduxCartItems, cartSubTotal, deleteProduct }) => {
-  const [products, setProducts] = useState(reduxCartItems);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     setProducts(reduxCartItems);

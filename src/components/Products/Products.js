@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import Product from "../Product/Product";
 import "./Products.css";
 
-const Products = ({ products }) => {
+const Products = ({ storeProducts }) => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    setProducts(storeProducts);
+  }, [storeProducts]);
+
   return (
     <div className="products-container">
       <header>
@@ -21,7 +27,7 @@ const Products = ({ products }) => {
 
 const mapStateToProps = (reduxStore) => {
   return {
-    products: reduxStore.productsReducer.products,
+    storeProducts: reduxStore.productsReducer.products,
   };
 };
 

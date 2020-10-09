@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import "./Navbar.css";
 import { getCartItems } from "../../redux/actions/productActions";
 
-const Navbar = (props) => {
+const Navbar = ({ itemsInCart }) => {
+  const [totalCartItems, setTotalCartItems] = useState(0);
+
   useEffect(() => {
-    getCartItems();
-  }, []);
+    setTotalCartItems(itemsInCart);
+  }, [itemsInCart]);
 
   return (
     <nav className="navbar">
@@ -23,7 +25,7 @@ const Navbar = (props) => {
         <span className="cart-icon">
           <i className="fas fa-cart-plus"></i>
         </span>
-        <span>{props.itemsInCart}</span>
+        <span>{totalCartItems}</span>
       </NavLink>
     </nav>
   );
@@ -31,7 +33,7 @@ const Navbar = (props) => {
 
 const mapStateToProps = (reduxStore) => {
   return {
-    itemsInCart: reduxStore.productsReducer.itemsInCart,
+    itemsInCart: reduxStore.productsReducer.totalCartItems,
   };
 };
 
